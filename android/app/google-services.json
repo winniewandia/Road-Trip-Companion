@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "546591496799",
+    "project_id": "roadtrip-companion",
+    "storage_bucket": "roadtrip-companion.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546591496799:android:171db2e470867dae50d9ea",
+        "android_client_info": {
+          "package_name": "com.road"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy2veVtmhl04QESGnDrxppuxKhdtmo_dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
