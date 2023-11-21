@@ -11,7 +11,6 @@ import {
   Button,
   Image,
   SafeAreaView,
-  ScrollView,
   StatusBar,
   Text,
   View,
@@ -22,7 +21,40 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
+// import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
 import {appStyles} from './Styles/appStyles';
+import {NearbyScreen} from './Screens/nearbyScreen';
+import {MapScreen} from './Screens/mapScreen';
+import {ProfileScreen} from './Screens/profileScreen';
+
+const Tab = createBottomTabNavigator();
+function tabIcon(route: any) {
+  if (route.name === 'Nearby') {
+    return (
+      <Image
+        style={appStyles.iconImageStyle}
+        source={require('./assets/nearby.png')}
+      />
+    );
+  } else if (route.name === 'Maps') {
+    return (
+      <Image
+        style={appStyles.iconImageStyle}
+        source={require('./assets/maps.png')}
+      />
+    );
+  } else {
+    return (
+      <Image
+        style={appStyles.iconImageStyle}
+        source={require('./assets/user.png')}
+      />
+    );
+  }
+}
 
 function App(): JSX.Element {
   const [loggedIn, setloggedIn] = useState(false);
@@ -98,9 +130,22 @@ function App(): JSX.Element {
     );
   } else {
     return (
-      <ScrollView>
-        <Text>Next</Text>
-      </ScrollView>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({}) => {
+              return tabIcon(route);
+            },
+            tabBarShowLabel: false,
+            tabBarActiveBackgroundColor: colors.secondary,
+            tabBarInactiveBackgroundColor: colors.primary,
+            headerShown: false,
+          })}>
+          <Tab.Screen name="Nearby" component={NearbyScreen} />
+          <Tab.Screen name="Maps" component={MapScreen} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     );
   }
 }
