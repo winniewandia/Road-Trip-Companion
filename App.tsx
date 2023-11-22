@@ -29,7 +29,30 @@ import {appStyles} from './Styles/appStyles';
 import {NearbyScreen} from './Screens/nearbyScreen';
 import {MapScreen} from './Screens/mapScreen';
 import {ProfileScreen} from './Screens/profileScreen';
+import {createStackNavigator} from '@react-navigation/stack';
+import {About} from './Screens/about';
 
+const Stack = createStackNavigator();
+
+const MyStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="About"
+        component={About}
+        options={{
+          headerStyle: {backgroundColor: colors.primary},
+          headerTintColor: 'white',
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 const Tab = createBottomTabNavigator();
 function tabIcon(route: any) {
   if (route.name === 'Nearby') {
@@ -56,6 +79,24 @@ function tabIcon(route: any) {
   }
 }
 
+const HomeScreen = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({}) => {
+          return tabIcon(route);
+        },
+        tabBarShowLabel: false,
+        tabBarActiveBackgroundColor: colors.secondary,
+        tabBarInactiveBackgroundColor: colors.primary,
+        headerShown: false,
+      })}>
+      <Tab.Screen name="Nearby" component={NearbyScreen} />
+      <Tab.Screen name="Maps" component={MapScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+};
 function App(): JSX.Element {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setuserInfo] = useState({});
@@ -131,20 +172,7 @@ function App(): JSX.Element {
   } else {
     return (
       <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({route}) => ({
-            tabBarIcon: ({}) => {
-              return tabIcon(route);
-            },
-            tabBarShowLabel: false,
-            tabBarActiveBackgroundColor: colors.secondary,
-            tabBarInactiveBackgroundColor: colors.primary,
-            headerShown: false,
-          })}>
-          <Tab.Screen name="Nearby" component={NearbyScreen} />
-          <Tab.Screen name="Maps" component={MapScreen} />
-          <Tab.Screen name="Profile" component={ProfileScreen} />
-        </Tab.Navigator>
+        <MyStack />
       </NavigationContainer>
     );
   }

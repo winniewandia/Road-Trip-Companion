@@ -1,8 +1,9 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {profileStyles} from '../Styles/profileStyles';
 
-export function ProfileScreen() {
+export function ProfileScreen({navigation}: any) {
   return (
     <SafeAreaView>
       <View style={profileStyles.profileContainer}>
@@ -10,7 +11,9 @@ export function ProfileScreen() {
           <View>
             <Text style={profileStyles.profileText}>Profile</Text>
           </View>
-          <TouchableOpacity style={profileStyles.iconOpacity}>
+          <TouchableOpacity
+            style={profileStyles.iconOpacity}
+            onPress={() => navigation.navigate('About')}>
             <Image
               source={require('../assets/setting-lines.png')}
               style={profileStyles.settingsIcon}
