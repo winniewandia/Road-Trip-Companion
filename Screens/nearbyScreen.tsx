@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {nearbyStyles} from '../Styles/nearbyStyles';
 import colors from '../colors';
+import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 
 function getTime() {
   let timeOfDay = '';
@@ -29,7 +30,18 @@ export function NearbyScreen() {
   return (
     <SafeAreaView>
       <StatusBar backgroundColor={colors.primary} />
-      <View style={nearbyStyles.mapView} />
+      <View style={nearbyStyles.mapView}>
+        <MapView
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          style={nearbyStyles.map}
+          region={{
+            latitude: -1.286389,
+            longitude: 36.817223,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.0121,
+          }}
+        />
+      </View>
       <View style={nearbyStyles.buttonTextView}>
         <View style={nearbyStyles.textViewStyle}>
           <Text style={nearbyStyles.textViewTime}>Good {getTime()}!</Text>

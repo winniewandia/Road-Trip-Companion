@@ -44,10 +44,15 @@ export const nearbyStyles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
   mapView: {
+    // ...StyleSheet.absoluteFillObject,
     height: 300,
     width: 'auto',
-    backgroundColor: colors.secondary,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
   textViewStyle: {
     height: 50,
