@@ -12,4 +12,16 @@ export const mapStyles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
+  textInput: {
+    borderRadius: 10,
+    color: 'black',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    height: 45,
+  },
+  textInputView: {
+    position: 'absolute',
+    top: 30,
+    width: '95%',
+  },
 });

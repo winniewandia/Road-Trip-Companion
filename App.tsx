@@ -5,14 +5,17 @@
  * @format
  */
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Alert,
   Button,
   Image,
+  PermissionsAndroid,
+  Platform,
   SafeAreaView,
   StatusBar,
   Text,
+  ToastAndroid,
   View,
 } from 'react-native';
 import colors from './colors';
@@ -31,6 +34,8 @@ import {MapScreen} from './Screens/mapScreen';
 import {ProfileScreen} from './Screens/profileScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {About} from './Screens/about';
+
+// navigator.geolocation = require('@react-native-community/geolocation');
 
 const Stack = createStackNavigator();
 
@@ -98,6 +103,39 @@ const HomeScreen = () => {
   );
 };
 function App(): JSX.Element {
+  const [permissionsGranted, setPermissionsGranted] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      ]).then(result => {
+        if (
+          result['android.permission.ACCESS_COARSE_LOCATION'] &&
+          result['android.permission.ACCESS_FINE_LOCATION'] === 'granted'
+        ) {
+          setPermissionsGranted(true);
+          // this.setState({
+          //   permissionsGranted: true,
+          // });
+        } else if (
+          result['android.permission.ACCESS_COARSE_LOCATION'] ||
+          result['android.permission.ACCESS_FINE_LOCATION'] ===
+            'never_ask_again'
+        ) {
+          ToastAndroid.show(
+            'Please Go into Settings -> Applications -> APP_NAME -> Permissions and Allow permissions to continue',
+            ToastAndroid.LONG,
+          );
+        }
+      });
+    }
+  }, []);
+  if (permissionsGranted) {
+    // Do something when permissions are granted
+    console.log('Permissions granted!');
+  }
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setuserInfo] = useState({});
   const checkIfLoggedIn = async () => {
