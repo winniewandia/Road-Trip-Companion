@@ -27,4 +27,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCSh5Tmo7Qognq3D_4pzMApV17DsxZYl3E"/>
     </application>
+    <queries>
+        <package android:name="com.google.android.apps.maps" />
+    </queries>
 </manifest>

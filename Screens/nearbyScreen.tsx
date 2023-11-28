@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TextInput,
 } from 'react-native';
 import {nearbyStyles} from '../Styles/nearbyStyles';
 import colors from '../colors';
@@ -41,6 +42,13 @@ export function NearbyScreen() {
             longitudeDelta: 0.0121,
           }}
         />
+        <View style={nearbyStyles.textInputView}>
+          <TextInput
+            style={nearbyStyles.textInput}
+            placeholder="Search & Explore"
+            placeholderTextColor={'black'}
+          />
+        </View>
       </View>
       <View style={nearbyStyles.buttonTextView}>
         <View style={nearbyStyles.textViewStyle}>

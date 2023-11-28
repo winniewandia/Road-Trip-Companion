@@ -54,6 +54,18 @@ export const nearbyStyles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
+  textInput: {
+    borderRadius: 10,
+    color: 'black',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    height: 45,
+  },
+  textInputView: {
+    position: 'absolute',
+    top: 30,
+    width: '95%',
+  },
   textViewStyle: {
     height: 50,
     margin: 20,
