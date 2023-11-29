@@ -30,7 +30,7 @@ import {NavigationContainer} from '@react-navigation/native';
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import {appStyles} from './Styles/appStyles';
 import {NearbyScreen} from './Screens/nearbyScreen';
-import {MapScreen} from './Screens/mapScreen';
+// import {MapScreen} from './Screens/mapScreen';
 import {ProfileScreen} from './Screens/profileScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {About} from './Screens/about';
@@ -97,7 +97,7 @@ const HomeScreen = () => {
         headerShown: false,
       })}>
       <Tab.Screen name="Nearby" component={NearbyScreen} />
-      <Tab.Screen name="Maps" component={MapScreen} />
+      {/* <Tab.Screen name="Maps" component={MapScreen} /> */}
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

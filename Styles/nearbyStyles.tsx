@@ -2,6 +2,9 @@ import {StyleSheet} from 'react-native';
 import colors from '../colors';
 
 export const nearbyStyles = StyleSheet.create({
+  autocompleteStyles: {
+    color: 'black',
+  },
   bottomButtonImage: {
     height: 25,
     width: 25,
