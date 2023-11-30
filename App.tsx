@@ -34,6 +34,7 @@ import {NearbyScreen} from './Screens/nearbyScreen';
 import {ProfileScreen} from './Screens/profileScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {About} from './Screens/about';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // navigator.geolocation = require('@react-native-community/geolocation');
 
@@ -102,9 +103,11 @@ const HomeScreen = () => {
     </Tab.Navigator>
   );
 };
-function App(): JSX.Element {
-  const [permissionsGranted, setPermissionsGranted] = useState<boolean>(false);
 
+function App(): JSX.Element {
+  const [loggedIn, setloggedIn] = useState(false);
+  const [userInfo, setuserInfo] = useState({});
+  const [permissionsGranted, setPermissionsGranted] = useState<boolean>(false);
   useEffect(() => {
     if (Platform.OS === 'android') {
       PermissionsAndroid.requestMultiple([
@@ -132,12 +135,14 @@ function App(): JSX.Element {
       });
     }
   }, []);
+  // useEffect(() => {
+  //   // This function will be called when the component mounts or when 'loggedIn' changes
+  //   console.log('userinfo:', userInfo);
+  // }, [loggedIn, userInfo]);
   if (permissionsGranted) {
     // Do something when permissions are granted
     console.log('Permissions granted!');
   }
-  const [loggedIn, setloggedIn] = useState(false);
-  const [userInfo, setuserInfo] = useState({});
   const checkIfLoggedIn = async () => {
     const isSignedIn = await GoogleSignin.isSignedIn();
     setloggedIn(isSignedIn ? true : false);
@@ -152,7 +157,8 @@ function App(): JSX.Element {
       const user = await GoogleSignin.signIn();
       setloggedIn(true);
       setuserInfo(user);
-      console.log(userInfo);
+      getCurrentUser();
+      // console.log('userinfo:', userInfo);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -169,11 +175,22 @@ function App(): JSX.Element {
       }
     }
   };
+  async function getCurrentUser() {
+    const currentUser = await GoogleSignin.getCurrentUser();
+    console.log(currentUser);
+    try {
+      const jsonValue = JSON.stringify(currentUser);
+      await AsyncStorage.setItem('userData', jsonValue);
+    } catch (e) {
+      console.log(e + 'storage');
+    }
+  }
   const signOut = async () => {
     try {
       await GoogleSignin.signOut();
       setloggedIn(false);
       setuserInfo([]);
+      console.log(userInfo);
     } catch (error) {
       console.error(error);
     }

@@ -1,9 +1,38 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {profileStyles} from '../Styles/profileStyles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function ProfileScreen({navigation}: any) {
+  type UserData = {
+    idToken: null | string;
+    scopes: string[];
+    serverAuthCode: null | string;
+    user: {
+      email: string;
+      familyName: string;
+      givenName: string;
+      id: string;
+      name: string;
+      photo: string;
+    };
+  };
+
+  const [userInfo, setUserInfo] = useState({} as UserData);
+  const getData = useCallback(async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('userData');
+      if (jsonValue !== null) {
+        setUserInfo(JSON.parse(jsonValue) as UserData);
+      }
+    } catch (e) {
+      console.log(e + 'read');
+    }
+  }, []);
+  useEffect(() => {
+    getData();
+  }, [getData]);
   return (
     <SafeAreaView>
       <View style={profileStyles.profileContainer}>
@@ -21,10 +50,23 @@ export function ProfileScreen({navigation}: any) {
           </TouchableOpacity>
         </View>
         <View style={profileStyles.userView}>
-          <View style={profileStyles.userIconView} />
+          <View style={profileStyles.userIconView}>
+            {userInfo?.user?.photo && (
+              <Image
+                source={{
+                  uri: userInfo.user.photo,
+                }}
+                style={profileStyles.userIconView}
+              />
+            )}
+          </View>
           <View style={profileStyles.userTextView}>
-            <Text style={profileStyles.userText}>Fullname</Text>
-            <Text style={profileStyles.userText}>Email</Text>
+            {userInfo?.user?.name && (
+              <Text style={profileStyles.userText}>{userInfo.user.name}</Text>
+            )}
+            {userInfo?.user?.email && (
+              <Text style={profileStyles.userText}>{userInfo.user.email}</Text>
+            )}
           </View>
         </View>
         <View style={profileStyles.tripIconView}>
@@ -39,9 +81,9 @@ export function ProfileScreen({navigation}: any) {
             Each trip you create is stored here, ready for your next adventure
           </Text>
         </View>
-        <TouchableOpacity style={profileStyles.newTripOpacity}>
+        {/* <TouchableOpacity style={profileStyles.newTripOpacity}>
           <Text style={profileStyles.newTripOpacityText}>Start New Trip</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );

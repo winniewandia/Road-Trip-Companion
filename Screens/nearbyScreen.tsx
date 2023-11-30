@@ -185,7 +185,7 @@ export function NearbyScreen() {
               />
             )}
             {restaurantSelect &&
-              restaurantData.map(restaurant => (
+              restaurantData.map((restaurant: any) => (
                 <Marker
                   key={restaurant.place_id}
                   coordinate={{
@@ -197,7 +197,7 @@ export function NearbyScreen() {
                 />
               ))}
             {hotelSelect &&
-              hotelData.map(hotel => (
+              hotelData.map((hotel: any) => (
                 <Marker
                   key={hotel.place_id}
                   coordinate={{
@@ -209,7 +209,7 @@ export function NearbyScreen() {
                 />
               ))}
             {poiSelect &&
-              poiData.map(poi => (
+              poiData.map((poi: any) => (
                 <Marker
                   key={poi.place_id}
                   coordinate={{
@@ -221,7 +221,7 @@ export function NearbyScreen() {
                 />
               ))}
             {fuelSelect &&
-              fuelData.map(fuel => (
+              fuelData.map((fuel: any) => (
                 <Marker
                   key={fuel.place_id}
                   coordinate={{
