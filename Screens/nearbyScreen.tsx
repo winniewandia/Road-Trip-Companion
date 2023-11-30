@@ -35,14 +35,8 @@ function getTime() {
 }
 
 navigator.geolocation = require('@react-native-community/geolocation');
+
 export function NearbyScreen() {
-  // function emptyComponent() {
-  //   return (
-  //     <View style={{flex: 1}}>
-  //       <Text>No results were found</Text>
-  //     </View>
-  //   );
-  // }
   const [permissionsGranted, setPermissionsGranted] = useState<boolean>(false);
   const [longitude, setLongitude] = useState(36.817223);
   const [latitude, setLatitude] = useState(-1.286389);
@@ -121,9 +115,6 @@ export function NearbyScreen() {
           result['android.permission.ACCESS_FINE_LOCATION'] === 'granted'
         ) {
           setPermissionsGranted(true);
-          // this.setState({
-          //   permissionsGranted: true,
-          // });
         } else if (
           result['android.permission.ACCESS_COARSE_LOCATION'] ||
           result['android.permission.ACCESS_FINE_LOCATION'] ===
