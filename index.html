@@ -1,1 +1,81 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="index.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Road Trip Companion Landing page</title>
+  </head>
+  <body>
+    
+    <nav>
+        <ul class="nav-flex-row">
+          <li class="nav-item">
+            <a href="#feature" onclick="navigateToPage('index.html')">Feature</a>
+          </li>
+          <li class="nav-item">
+            <a href="#developer" onclick="navigateToPage('developerInfo.html')">Developer</a>
+          </li>
+        </ul>
+      </nav>
+
+  <section class="section-intro">
+    <div class="link-to-book-wrapper">
+      <a class="link-to-book" href="#install">Install App</a>
+    </div>
+    <div class="link-to-book-wrapper">
+        <a class="link-to-book" href="#github">Get it on github</a>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <article>
+      <h3>
+        Road Trip Companion
+      </h3>
+      <p>
+        Your personalized guide to unforgettable journeys in Kenya, combining expert recommendations, real-time maps, and safety features for an enriching travel experience.
+      </p>
+    </article>
+  </section>
+  <div class="screen-div">
+    <section class="login-section">
+        <div class="login-div">
+            <img src="assets/login.png" alt="login screen" width="260" height="500">
+            <p><b>Seamless Sign-In<br></b>Easily access personalized road trip planning by signing in securely with Google.<br> Start your journey hassle-free with a single click.</p>
+        </div>
+    </section>
+    <section class="nearby-section">
+        <div class="nearby-div">
+            <p><b>Discover Your Surroundings<br></b>Discover the wonders around you!<br> Explore nearby attractions, find great dining spots, family-friendly activities, fuel stations, and more.<br> Your ultimate companion for spontaneous adventures.</p>
+        <img src="assets/nearbyscreen.png" alt="nearby screen" width="260" height="500">
+        </div>
+    </section>
+    <section class="profile-section">
+        <div class="profile-div">
+        <img src="assets/profile.png" alt="profile screen" width="260" height="500">
+        <p><b>Your Road Trip Persona<br></b>Make every road trip uniquely yours!<br> Create a personalized profile to store your preferences,<br> track your journeys, and enhance your travel experience with tailored recommendations.</p>
+        </div>
+    </section>
+    <section class="aboutscreen-section">
+        <div class="about-div">
+        <p><b>Explore Our Vision<br></b>Learn more about the vision behind Road Trip Companion.<br> Explore our commitment to providing a seamless and enriching road trip experience in Kenya.<br> Your journey begins here!</p>
+        <img src="assets/about.png" alt="about screen" width="260" height="500">
+        </div>
+    </section>
+  </div>
+
+  <script>
+    function navigateToPage(page) {
+        window.location.href = page;
+    }
+  </script>
+  
+  </body>
+  
+</html> 
