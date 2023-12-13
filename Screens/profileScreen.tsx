@@ -4,6 +4,7 @@ import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {profileStyles} from '../Styles/profileStyles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+//profile screen implementation
 export function ProfileScreen({navigation}: any) {
   type UserData = {
     idToken: null | string;

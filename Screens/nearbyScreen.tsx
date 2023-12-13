@@ -35,7 +35,7 @@ function getTime() {
 }
 
 navigator.geolocation = require('@react-native-community/geolocation');
-
+// nearby screen functionality
 export function NearbyScreen() {
   const [permissionsGranted, setPermissionsGranted] = useState<boolean>(false);
   const [longitude, setLongitude] = useState(36.817223);

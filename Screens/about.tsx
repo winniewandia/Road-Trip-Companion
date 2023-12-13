@@ -4,6 +4,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {aboutUsStyles} from '../Styles/aboutStyles';
 import DeviceInfo from 'react-native-device-info';
 
+//about screen functionality
 export function About() {
   const version = DeviceInfo.getVersion();
   return (

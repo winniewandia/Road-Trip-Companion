@@ -24,20 +24,16 @@ import {
   GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin';
-// import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-// import Ionicons from 'react-native-vector-icons/Ionicons';
 import {appStyles} from './Styles/appStyles';
 import {NearbyScreen} from './Screens/nearbyScreen';
-// import {MapScreen} from './Screens/mapScreen';
 import {ProfileScreen} from './Screens/profileScreen';
 import {createStackNavigator} from '@react-navigation/stack';
 import {About} from './Screens/about';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// navigator.geolocation = require('@react-native-community/geolocation');
-
+//Using stack navigation as the main navigation
 const Stack = createStackNavigator();
 
 const MyStack = () => {
@@ -59,6 +55,8 @@ const MyStack = () => {
     </Stack.Navigator>
   );
 };
+//creating tab navigation for each stack
+
 const Tab = createBottomTabNavigator();
 function tabIcon(route: any) {
   if (route.name === 'Nearby') {
@@ -104,6 +102,7 @@ const HomeScreen = () => {
   );
 };
 
+//starting point for the app
 function App(): JSX.Element {
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setuserInfo] = useState({});
@@ -119,9 +118,6 @@ function App(): JSX.Element {
           result['android.permission.ACCESS_FINE_LOCATION'] === 'granted'
         ) {
           setPermissionsGranted(true);
-          // this.setState({
-          //   permissionsGranted: true,
-          // });
         } else if (
           result['android.permission.ACCESS_COARSE_LOCATION'] ||
           result['android.permission.ACCESS_FINE_LOCATION'] ===
@@ -135,10 +131,6 @@ function App(): JSX.Element {
       });
     }
   }, []);
-  // useEffect(() => {
-  //   // This function will be called when the component mounts or when 'loggedIn' changes
-  //   console.log('userinfo:', userInfo);
-  // }, [loggedIn, userInfo]);
   if (permissionsGranted) {
     // Do something when permissions are granted
     console.log('Permissions granted!');
@@ -153,12 +145,10 @@ function App(): JSX.Element {
   const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
-      // const {accessToken, idToken} = await GoogleSignin.signIn();
       const user = await GoogleSignin.signIn();
       setloggedIn(true);
       setuserInfo(user);
       getCurrentUser();
-      // console.log('userinfo:', userInfo);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
