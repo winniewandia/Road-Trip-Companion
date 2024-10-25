@@ -12,15 +12,68 @@
           "package_name": "com.road"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "546591496799-e6d5q7ab2njnqs0rmrib6rf4a42j6avl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.road",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "546591496799-dg1m6d044m7ervaba0j8uvt3q6jfliuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBy2veVtmhl04QESGnDrxppuxKhdtmo_dI"
+        },
+        {
+          "current_key": "AIzaSyBbb-KEo2yPsfKruIpAJODOhKxtFPmKT7E"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546591496799-dg1m6d044m7ervaba0j8uvt3q6jfliuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546591496799:android:fab2d148f1ac6c3650d9ea",
+        "android_client_info": {
+          "package_name": "com.roadTripCompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546591496799-dg1m6d044m7ervaba0j8uvt3q6jfliuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy2veVtmhl04QESGnDrxppuxKhdtmo_dI"
+        },
+        {
+          "current_key": "AIzaSyBbb-KEo2yPsfKruIpAJODOhKxtFPmKT7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546591496799-dg1m6d044m7ervaba0j8uvt3q6jfliuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

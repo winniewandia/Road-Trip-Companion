@@ -5,7 +5,7 @@ import {aboutUsStyles} from '../Styles/aboutStyles';
 import DeviceInfo from 'react-native-device-info';
 
 //about screen functionality
-export function About() {
+export const About = ({signOut}: {signOut: () => void}) => {
   const version = DeviceInfo.getVersion();
   return (
     <SafeAreaView>
@@ -143,8 +143,13 @@ export function About() {
               <Text style={aboutUsStyles.privacyText}>Privacy Policy</Text>
             </TouchableOpacity>
           </View>
+          <View style={aboutUsStyles.logOutView}>
+            <TouchableOpacity onPress={signOut}>
+              <Text style={aboutUsStyles.logOutText}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </SafeAreaView>
   );
-}
+};

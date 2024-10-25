@@ -36,7 +36,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //Using stack navigation as the main navigation
 const Stack = createStackNavigator();
 
-const MyStack = () => {
+const MyStack = ({signOut}: {signOut: () => void}) => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -46,12 +46,12 @@ const MyStack = () => {
       />
       <Stack.Screen
         name="About"
-        component={About}
         options={{
           headerStyle: {backgroundColor: colors.primary},
           headerTintColor: 'white',
-        }}
-      />
+        }}>
+        {props => <About {...props} signOut={signOut} />}
+      </Stack.Screen>
     </Stack.Navigator>
   );
 };
@@ -217,7 +217,7 @@ function App(): JSX.Element {
   } else {
     return (
       <NavigationContainer>
-        <MyStack />
+        <MyStack signOut={signOut} />
       </NavigationContainer>
     );
   }

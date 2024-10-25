@@ -49,6 +49,14 @@ export const aboutUsStyles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
   },
+  logOutText: {
+    color: 'red',
+    marginLeft: 20,
+    marginTop: 10,
+  },
+  logOutView: {
+    height: 80,
+  },
   mainContainer: {
     backgroundColor: colors.primary,
     height: '100%',
